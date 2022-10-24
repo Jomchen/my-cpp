@@ -1,0 +1,36 @@
+HELP.md
+target/
+**/src/main/resources/META-INF/config/local.properties
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+*.class
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+nbactions-fat.xml
+nbactions.xml
+nbactions**
+
+### VS Code ###
+.vscode/
