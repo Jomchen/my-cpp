@@ -20,24 +20,6 @@ class MyActual : public MyVirtual {
      pp.show();
  }
 
-class A {
-     public:
-        A() { cout << "A--" << endl; }
-};
-class B : virtual public A { // 声明B是类A的公用派生类，A是B的基类
-     public:
-        B() { cout << "B--" << endl; }
-};
-class C : virtual public A { // 声明类C是类A的公用派生类，A是C的虚基类
-     public:
-        C() { cout << "C--" << endl; }
-};
-class D : public B, public C { // 如此 A 中内容只被继承一次，不会因为 B 和 C 而继承两次
-    public:
-        D() { cout << "D--" << endl; }
-};
-
-
 
 /**
  * 虚函数一般不申明为内联函数
