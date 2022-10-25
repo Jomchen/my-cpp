@@ -6,13 +6,13 @@ using namespace std;
 class MyVirtual {
     public:
         MyVirtual() {}
-        virtual void show() {
+        virtual void show() { // 注意这里的 virtual 声明对以下的多态测试很有影响
             cout << "MyVirtual" << endl;
         }
 };
 class MyActual : public MyVirtual {
     public:
-        virtual void show() {
+        void show() {
             cout << "MyActual" << endl; 
         }
 };
@@ -38,21 +38,21 @@ int main() {
 
     cout << "------------------------------" << endl;
 
-    mv = ma; // 这是把 ma 的成员数据拷贝给 mv，所以当下面一行执行 mv.show() 时显示的是 MyVirtual
+    mv = ma; // 这是把 ma 的成员数据拷贝给 mv，本质 mv 还是 MyVirtual 对象，所以当下面一行执行 mv.show() 时显示的是 MyVirtual
     mv.show(); // MyVirtual  TODO 注意！！！
 
     cout << "------------------------------" << endl;
 
     mp = &ma;
-    mp->show(); // MyActual
-    (*mp).show(); // MyActual
+    mp->show(); // MyActual，如果 MyVirtual 的 show 没有声明为 virtual 则显示 MyVirtual
+    (*mp).show(); // MyActual，如果 MyVirtual 的 show 没有声明为 virtual 则显示 MyVirtual
 
     cout << "------------------------------" << endl;
 
     MyVirtual mv00;
     MyActual ma00;
     printMv(mv00); // MyVirtual
-    printMv(ma00); // MyActual
+    printMv(ma00); // MyActual，如果 MyVirtual 的 show 没有声明为 virtual 则显示 MyVirtual
 
     return 0;
 }
