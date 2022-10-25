@@ -29,8 +29,8 @@ class PureClass {
 class PureImplement : public PureClass {
     public:
         void fun() { cout << "非虚函数 PureImplement fun" << endl; }
-        virtual void fun1() { cout << "虚函数 PureImplement fun1" << endl; }
-        virtual void fun2() { cout << "实现纯虚函数 fun2"  << endl; }
+        void fun1() { cout << "虚函数 PureImplement fun1" << endl; }
+        void fun2() { cout << "实现纯虚函数 fun2"  << endl; }
 };
 
 void testVirtualExtends();
@@ -45,6 +45,7 @@ void testPureVirtual();
  * 如果一个类中至少包含一个纯虚函数，这个类就被称为抽象类
  * 抽象类不能作为形参类型，返回类型，转换类型；但是可以作为相应类型的指针进行指向派生类对象进行使用
  * 
+ * 虚基类
  * 虚基类 virtual base class 的方式使得在继承间接共同基类时在多个间接同名成员中只保留一份成员
  * 虚基类是在声明派生类时由继承方式决定的，并不是在声明基类时决定的，即 class 派生类 : virtual 继承方式 基类名
  *     经过这样的声明后，当基类通过多条派生路径被一个派生类继承后，该派生类只继承该基类一次
