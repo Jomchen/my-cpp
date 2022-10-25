@@ -2,20 +2,6 @@
 
 using namespace std;
 
-class A {
-     public:
-        A() { cout << "A--" << endl; }
-};
-class B : virtual public A { // 声明B是类A的公用派生类，A是B的基类
-     public:
-        B() { cout << "B--" << endl; }
-};
-class C : virtual public A { // 声明类C是类A的公用派生类，A是C的虚基类
-     public:
-        C() { cout << "C--" << endl; }
-};
-
-
 /**
  * 纯虚函数和抽象类
  * 纯虚函数在声明时要在函数原型的后面赋0，其声明格式如下：
