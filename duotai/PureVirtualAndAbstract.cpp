@@ -20,6 +20,27 @@ class D : public B, public C { // 如此 A 中内容只被继承一次，不会�
         D() { cout << "D--无参构造器" << endl; }
 };
 
+class Base {
+    public:
+        int data;
+        Base(int da) : data(da) { cout << "Base 有参构造器" << endl; }
+};
+class First : virtual public Base {
+    public:
+        First(int data) : Base(data) { cout << "A 有参构造器" << endl; }
+};
+class Second : virtual public Base {
+    public:
+        Second(int data) : Base(data) { cout << "B 有参构造器" << endl; }
+};
+class Third : public First, public Second {
+    public:
+        Third(int data) : First(data), Second(data * 100) , Base(data * 1000) {
+            cout << "C 有参构造器" << endl;
+        }
+};
+
+
 class PureClass {
     public:
         void fun() { cout << "非虚函数 PureClass fun" << endl; }
@@ -33,7 +54,8 @@ class PureImplement : public PureClass {
         void fun2() { cout << "实现纯虚函数 fun2"  << endl; }
 };
 
-void testVirtualExtends();
+void testVirtualBase();
+void testVirtualBase2();
 void testPureVirtual();
 
 /**
@@ -60,7 +82,7 @@ int main() {
 /**
  * 测试虚基类
  */
-void testVirtualExtends() {
+void testVirtualBase() {
     D d = D();
     cout << d.a << endl;
     cout << d.B::a << endl;
@@ -73,6 +95,19 @@ void testVirtualExtends() {
     cout << d.a << endl;
     cout << d.B::a << endl;
     cout << d.C::a << endl;
+}
+
+/**
+ * 测试虚基类（另一种类的测试）
+ */
+void testVirtualBase2() {
+    Third third(9);
+    cout << third.First::data << endl;
+    cout << third.Second::data << endl;
+    third.data = 999; // 如果 First 和 Second 继承 Base 时没有加 virtual ，那么这里会报错（不确定的错误）。因为 都写了 virtual 所以Base只继承了一次，所以这里的值就唯一，不会报错
+    cout << "改变值后 ***************************************************" << endl;
+    cout << third.First::data << endl;
+    cout << third.Second::data << endl;
 }
 
 void testPureVirtual() {
