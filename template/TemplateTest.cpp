@@ -43,7 +43,7 @@ template <class T> class Wrapper {
         Wrapper() : name("unknown") { cout << "Wrapper 无参构造器" << endl; }
         T getData() { return data; }
         string getName() { return name; }
-        void print() { cout << "name=(" << name << "), data=(" << data << ")" << endl; }
+        void print() { cout << "name=(" << name << "), data=(" << data << ")" << endl; } // 这里的 data 具体的类型 T 如果没有对应的 << 重写则会引起报错
 };
 
 
