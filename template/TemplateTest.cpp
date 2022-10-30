@@ -22,7 +22,7 @@ class MyData : public Sort {
 
 // 重写输出符号
 ostream & operator<< (ostream & os, const MyData & myd) {
-    //myd.getName(); TODO 为什么 myd.getName() 和 myd.getAge() 不能调用
+    // myd.getName(); myd.getName() 和 myd.getAge() 不能调用 是因为友元函数是只能访问其成员属性而非成员函数
     cout <<  myd.name << "--" << myd. age ;
     return os;
 }
