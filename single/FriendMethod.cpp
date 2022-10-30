@@ -35,6 +35,7 @@ double getDist(Pixel p1, Pixel p2) {
 
 /*
 * 友元函数，友元函数不属于成员函数
+* 注意！！注意！！友元是可以访问其成员属性，而非成员函数
 */
 int main() {
     Pixel p1(0,0), p2(10,10);
