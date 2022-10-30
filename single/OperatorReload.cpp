@@ -46,6 +46,12 @@ using namespace std;
 
 // 5. 重载 ++ 和 -- 时，如果有参数则表示后缀重载，否则表示前缀
 
+// 重载强制类型转换运算符
+// 类型的名字（包括类型的名字）本身也是一种运算符，即强制类型转换运算符，是单目运算符，只能重载为成员函数
+// 经过重载后，(类型名)对象 等价于 对象.operator 类型名()
+// 重载强制类型转换运算符时，不需要指定返回值类型，因为返回值类型是确定的
+// 经过行当重载后，(类型名)对象 这个对对象进行强制类型转换的表达式等价于 对象.operator 类型名()，即变成运行符函数的调用
+
 class Mypp {
     private:
         int data;
@@ -133,6 +139,23 @@ MyFriend::MyFriend(int aa, int bb) {
 }
 
 
+class Complex {
+    private:
+        double real, virt;
+    public:
+        Complex(double r=0,double v=0) : real(r), virt(v) {}
+        friend Complex operator +(Complex a, Complex b);
+        friend ostream & operator << (ostream &out, Complex &a);
+};
+ostream & operator <<(ostream &out, Complex &a) {
+    return out << a.real << " + " << a.virt << "i\n";
+}
+Complex operator+(Complex a, Complex b) {
+    return Complex(a.real + b.real, a.virt + b.virt);
+}
+
+int testProblem();
+
 /*
 * 运算符重载
 */
@@ -171,6 +194,21 @@ int main() {
     myppSecond.print(); // 101
     newMyppSecond.print(); // 101
 
+    testProblem(); // TODO 这个输出是为什么，为什么可以 数字加上对象
+
+    return 0;
+}
+
+int testProblem() {
+    //Kongfu kf("独孤九剑", 999, "独孤求败", 90);
+    //cout << kf.getUser().getName() << endl;
+    Complex a(2,5),b(7,8),c(0,0);
+    c = a+b;
+    cout << c;
+    c = 4.1 + a;
+    cout << c;
+    c = b + 5.6;
+    cout << c;
 
     return 0;
 }
