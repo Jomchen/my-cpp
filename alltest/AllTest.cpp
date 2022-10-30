@@ -80,7 +80,7 @@ void test00() {
     cout << c;
 
     Certain n(100);
-    int i = n; // 隐式调用强转 (int)
+    int i = n; // TODO 隐式调用强转 (int)
     cout << i + n << endl;
 }
 
