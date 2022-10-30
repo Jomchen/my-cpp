@@ -42,7 +42,7 @@ using namespace std;
  * input.seekg(-20, ios::end);       // 位置标记移动到文件尾前 20 字节
  * 
 */
-test();
+void test();
 int main() {
     test();
     return 0;
