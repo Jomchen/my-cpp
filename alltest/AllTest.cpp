@@ -43,19 +43,48 @@ Complex operator+(Complex a, Complex b) {
     return Complex(a.real + b.real, a.virt + b.virt);
 }
 
+class Something {
+    private:
+        int val;
+    public:
+        Something(int i) {
+            val = i;
+        }
+        operator int();
+};
+Something::operator int() {
+    return val;
+}
+class Certain : public Something {
+    public:
+        Certain(int i) : Something(i) {}
+};
+
+void test00();
+void test01();
 /**
  * 所有测试
  */
 int main() {
-    //Kongfu kf("独孤九剑", 999, "独孤求败", 90);
-    //cout << kf.getUser().getName() << endl;
+    test00();
+    return 0;
+}
+
+void test00() {
     Complex a(2,5),b(7,8),c(0,0);
     c = a+b;
     cout << c;
-    c = 4.1 + a;
+    c = 4.1 + a; // TODO 为什么可以这样相加
     cout << c;
     c = b + 5.6;
     cout << c;
 
-    return 0;
+    Certain n(100);
+    int i = n; // 隐式调用强转 (int)
+    cout << i + n << endl;
+}
+
+void test01() {
+    Kongfu kf("独孤九剑", 999, "独孤求败", 90);
+    cout << kf.getUser().getName() << endl;
 }
