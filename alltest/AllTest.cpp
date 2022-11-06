@@ -32,7 +32,9 @@ class Complex {
     private:
         double real, virt;
     public:
-        Complex(double r=0,double v=0) : real(r), virt(v) {}
+        Complex(double r=0,double v=0) : real(r), virt(v) {
+            cout << "有参构造函数：real=" << real << ", virt=" << virt << endl;
+        }
         friend Complex operator +(Complex a, Complex b);
         friend ostream & operator << (ostream &out, Complex &a);
 };
