@@ -104,7 +104,7 @@ void testVirtualBase2() {
     Third third(9);
     cout << third.First::data << endl;
     cout << third.Second::data << endl;
-    third.data = 999; // 如果 First 和 Second 继承 Base 时没有加 virtual ，那么这里会报错（不确定的错误）。因为 都写了 virtual 所以Base只继承了一次，所以这里的值就唯一，不会报错
+    third.data = 999; // 如果 First 和 Second 继承 Base 时没有加 virtual ，那么这里会报错（不确定使用继承自哪个的 data 的错误）。因为 都写了 virtual 所以Base只继承了一次，所以这里的值就唯一，不会报错
     cout << "改变值后 ***************************************************" << endl;
     cout << third.First::data << endl;
     cout << third.Second::data << endl;
