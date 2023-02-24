@@ -13,8 +13,9 @@ int main() {
 
     int data = 3;
     int data2 = 100;
-    int * const p1 = &data; // 指针为常量
+
     const int *p2 = &data; // 指针指向的值为常量
+    int * const p1 = &data; // 指针为常量
 
     return 0;
 }
