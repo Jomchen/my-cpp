@@ -39,7 +39,7 @@ class Complex {
         friend ostream & operator << (ostream &out, Complex &a);
 };
 ostream & operator <<(ostream &out, Complex &a) {
-    return out << a.real << " + " << a.virt << "i\n";
+    return out << a.real << " + " << a.virt << "\n";
 }
 Complex operator+(Complex a, Complex b) {
     return Complex(a.real + b.real, a.virt + b.virt);
