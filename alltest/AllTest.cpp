@@ -2,6 +2,13 @@
 #include<cstring>
 using namespace std;
 
+
+/**
+ * 测试重载运算符，隐藏赋值
+ * 
+ */
+
+
 class User {
     private:
         string name;
