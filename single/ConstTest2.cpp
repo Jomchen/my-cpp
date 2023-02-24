@@ -3,7 +3,7 @@
 using namespace std;
 
 /*
-* 测试常量成员
+* 测试常量成员，静态成员
 */
 class ConstObj {
     public:
@@ -17,7 +17,7 @@ class ConstObj {
         ConstObj(int data) : constData2(data) { cout << "有参构造方法" << endl; }
 };
 
-// 类的静态成员不能在类中声明时初始化，可以在外部初始化
+// 类的纯静态成员不能在类中声明时初始化，可以在外部初始化
 int ConstObj::staticData2 = 100;
 
 int main() {
