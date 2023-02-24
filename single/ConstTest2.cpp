@@ -7,11 +7,13 @@ using namespace std;
 */
 class ConstObj {
     public:
-        const int constData = 3;
+        //static int staticData = 4; 类的纯静态成员不能在类中初始化
+        static int staticData2; // 纯静态成员只能在类外部初始化
+
+        static const int staticConstData = 999; // 常量型静态成员可以在类的内部初始化
+        const int constData = 3; // 纯常量可以在类内部初始化
         const int constData2;
-        //static int staticData = 4; 类的静态成员不能在类中初始化
-        static int staticData2;
-        ConstObj() : constData2(3000) {} // 如果要对常量初始化除了一开始声明初始值，否则只有按如此形式才可以初始化
+        ConstObj() : constData2(3000) {} // 纯常量初始化除了一开始声明初始值，也可以按如此形式初始化
 };
 
 // 类的静态成员不能在类中声明时初始化，可以在外部初始化
@@ -20,5 +22,6 @@ int ConstObj::staticData2 = 100;
 int main() {
     ConstObj c;
     cout << c.constData2 << endl;
+    cout << c.staticConstData << endl;
     return 0;
 }
