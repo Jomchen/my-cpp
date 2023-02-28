@@ -25,13 +25,14 @@ class Son : public Father , public GrandFather{
 
 class MuchFree {
     public:
+        MuchFree() {cout << "MuchFree 无参构造函数" << endl; }
         ~MuchFree() { cout << "MuchFree 析构函数" << endl; }
         void myPrint() { cout << "MuchFree" << endl; }   
 };
 class Free {
     public:
         int data;
-        Free() {}
+        Free() { cout << "Free无参构造函数" << endl; }
         Free(int d) { data = d; }
         ~Free() { cout << "Free 析构函数" << endl; }
         void myPrint() { cout << "Free" << endl; }
@@ -41,6 +42,7 @@ class UnFree : public Free , public MuchFree {
         int data2;
         GrandFather grandFather;
     public:
+        UnFree() { cout << "UnFree 无参构造函数" << endl; } 
         UnFree(int data) : Free(data * 10) { data2 = data; }
         ~UnFree() { cout << "UnFree 析构函数" << endl; }
         GrandFather *getGrandFather() { 
@@ -62,16 +64,18 @@ class DataTest {
  * 派生类中的成员可以访问基类中的公有 和 保护成员
 */
 int main() {
-    Son s;
-    s = Son();
-    s.print();
-    Son ss();
-    // TODO 这里为什么编译不通过 ss.print();
+    UnFree unfree;
 
-    UnFree uf(100);
-    uf.myPrint();
-    UnFree uf2 = UnFree(200);
-    uf2.myPrint();
+    // Son s;
+    // s = Son();
+    // s.print();
+    // Son ss();
+    // // TODO 这里为什么编译不通过 ss.print();
+
+    // UnFree uf(100);
+    // uf.myPrint();
+    // UnFree uf2 = UnFree(200);
+    // uf2.myPrint();
 
     return 0;
 }
