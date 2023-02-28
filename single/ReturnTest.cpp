@@ -36,6 +36,7 @@ ObjTest getByObj(ObjTest &ot) {
 }
 
 int main() {
+    // TODO 不明白这里赋值给指针后，指针仍然没有指向对象
     ObjTest ot(100);
     ObjTest *newOt;
     newOt = getByHand(ot);
