@@ -49,6 +49,7 @@ ostream & operator <<(ostream &out, Complex &a) {
     return out << a.real << " + " << a.virt << "\n";
 }
 Complex operator+(Complex a, Complex b) {
+    cout << "+重构: " << a.real << ", " << b.real << endl;
     return Complex(a.real + b.real, a.virt + b.virt);
 }
 
@@ -62,6 +63,7 @@ class Something {
         operator int();
 };
 Something::operator int() {
+    cout << "隐式调用: " << val << endl;
     return val;
 }
 class Certain : public Something {
@@ -88,9 +90,10 @@ void test00() {
     c = b + 5.6;
     cout << c;
 
+    cout << "-----------------------------------" << endl;
     Certain n(100);
     int i = n; // TODO 隐式调用强转 (int)
-    cout << i + n << endl;
+    cout << i + n << endl; // TODO 隐式调用强转 (int)
 }
 
 void test01() {
