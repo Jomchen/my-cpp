@@ -2,6 +2,15 @@
 
 using namespace std;
 
+class DataTest {
+    public:
+        int data;
+        DataTest() { cout << "DataTest 无参构造函数" << endl;  }
+        ~DataTest() { cout << "DataTest 析构造函数" << endl;  }
+        DataTest(int a) { data = a; }
+        void dataTestPrint() { cout << "the dataTest is: " << data << endl; }
+};
+
 class GrandFather {
     public:
         GrandFather() { cout << "grandFather 默认构造函数" << endl; }
@@ -40,6 +49,7 @@ class Free {
 class UnFree : public Free , public MuchFree {
     private:
         int data2;
+        DataTest dataTest;
         GrandFather grandFather;
     public:
         UnFree() { cout << "UnFree 无参构造函数" << endl; } 
@@ -52,12 +62,6 @@ class UnFree : public Free , public MuchFree {
 
 };
 
-class DataTest {
-    public:
-        int data;
-        DataTest(int a) { data = a; }
-        void dataTestPrint() { cout << "the dataTest is: " << data << endl; }
-};
 
 /**
  * 派生类不能基类的友元函数，但基类的成员函数是其他类的友元函数时，是可以被继承的
