@@ -27,16 +27,16 @@ class Base {
 };
 class First : virtual public Base {
     public:
-        First(int data) : Base(data) { cout << "A 有参构造器" << endl; }
+        First(int data) : Base(data) { cout << "First 有参构造器" << endl; }
 };
 class Second : virtual public Base {
     public:
-        Second(int data) : Base(data) { cout << "B 有参构造器" << endl; }
+        Second(int data) : Base(data) { cout << "Second 有参构造器" << endl; }
 };
 class Third : public First, public Second {
     public:
         Third(int data) : First(data), Second(data * 100) , Base(data * 1000) {
-            cout << "C 有参构造器" << endl;
+            cout << "Third 有参构造器" << endl;
         }
 };
 
@@ -75,7 +75,8 @@ void testPureVirtual();
  *     类。否则仍然会出现对基类的多次继承
 */
 int main() {
-    testPureVirtual();
+    // testPureVirtual();
+    testVirtualBase2();
     return 0;
 }
 
