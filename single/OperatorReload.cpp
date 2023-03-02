@@ -64,10 +64,12 @@ class Mypp {
         void print() { cout << "data: " << data << endl; }
 };
 Mypp Mypp::operator++() {
+    cout << "++Mypp" << endl;
     this->data++;
     return *this; 
 }
 Mypp Mypp::operator++(int c) {
+    cout << "Mypp++" << endl;
     Mypp old = *this;
     data++;
     return old;
@@ -92,9 +94,11 @@ class MyStream {
 };
 
 ostream &operator<<(ostream &os, MyStream &c1) {
+    cout << "MyStream<<" << endl;
     return os;
 }
 istream &operator >>(istream &is, MyStream &c1) {
+    cout << "MyStream>>" << endl;
     string sss;
     is >> sss;
     sss += sss + " Linux";
@@ -115,15 +119,19 @@ class MyFriend {
 };
 
 double MyFriend::operator()(double x, double y) const {
+    cout << "这里对MyFriend 的()进行了重载" << endl;
     return (x + y) * 2;
 }
 MyFriend MyFriend::operator-(const MyFriend &c) {
+    cout << "这里对MyFriend 的-进行了重载" << endl;
     return MyFriend((*this).a - c.a ,  (*this).b - c.b);
 }
 MyFriend  operator+(const MyFriend &c1, const MyFriend &c2) {
+    cout << "这里对MyFriend 的+进行了重载" << endl;
     return MyFriend(c1.a + c2.a, c2.b + c2.b);
  }
  MyFriend & MyFriend::operator=(const MyFriend &c1) {
+    cout << "这里对MyFriend 的=进行了重载" << endl;
     this->a = (c1.a * c1.a);
     this->b = (c1.b * c1.b);
     return *this;
@@ -149,9 +157,11 @@ class Complex {
         friend ostream & operator << (ostream &out, Complex &a);
 };
 ostream & operator <<(ostream &out, Complex &a) {
+    cout << "Complex<<" << endl;
     return out << a.real << " + " << a.virt << "i\n";
 }
 Complex operator+(Complex a, Complex b) {
+    cout << "Complex+" << endl;
     return Complex(a.real + b.real, a.virt + b.virt);
 }
 
