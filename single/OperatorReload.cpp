@@ -158,7 +158,7 @@ class Complex {
 };
 ostream & operator <<(ostream &out, Complex &a) {
     cout << "Complex<<" << endl;
-    return out << a.real << " + " << a.virt << "i\n";
+    return out << "real+virt=" << a.real << "+" << a.virt << endl;
 }
 Complex operator+(Complex a, Complex b) {
     cout << "Complex+" << endl;
