@@ -180,30 +180,35 @@ int main() {
     MyFriend mfMinute = mf1 - mf2;
     mfMinute.toString("mfMinute(mf1-mf2) ");
     // MyFriend mm = mf2; // 这里 mm.toString() 仍然输出 30 40（因为这里注意 Mfriend mm 会调用默认构造函数赋值给 mm，然后 mf2 的引用会赋值给 mm）
+    cout << "----------------------------------------------------------------------" << endl;
 
     MyFriend mm;
     mm.toString("mm(默认构造函数) ");
     mm = mf2; // 这里会输出 900 和 1600
     mf2.toString("mf2 ");
     mm.toString("mm ");
+    cout << "----------------------------------------------------------------------" << endl;
 
 
     MyType mytype(100);
     int newAge = (int)mytype;
     cout << newAge << endl;
     int newAge2 = 300 + mytype; // 这里mytype 会隐式调用 (int) mytype，因为强制转换已经重载为返回int了所以正常执行
+    cout << "----------------------------------------------------------------------" << endl;
 
     Mypp myppFirst(100);
     Mypp newMyppFirst;
     newMyppFirst = myppFirst++;
     myppFirst.print(); // 101
     newMyppFirst.print(); // 100
+    cout << "----------------------------------------------------------------------" << endl;
 
     Mypp myppSecond(100);
     Mypp newMyppSecond;
     newMyppSecond = ++myppSecond;
     myppSecond.print(); // 101
     newMyppSecond.print(); // 101
+    cout << "----------------------------------------------------------------------" << endl;
 
     testProblem(); // TODO 这个输出是为什么，为什么可以 数字加上对象
 
