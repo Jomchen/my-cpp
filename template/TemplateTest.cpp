@@ -3,6 +3,8 @@ using namespace std;
 
 // 函数模板
 // template <class T> 或 <typename T> 返回类型 函数名(参数表) { 函数体 }
+// 类模板
+// template <class T> class 类名 { 类体 }
 
 // 纯虚方法，引申出抽象类
 class Sort {
@@ -66,18 +68,22 @@ int main() {
     Sort *s = getMax(&my, &my2);
     cout << s -> getIndex() << endl;
 
+    // 测试类模板的运用
     //string strData = "Java";
     //Wrapper<string> wrapper01 = Wrapper("operating system", "Linux"); // TODO 为什么这个编译不通过，编译错误显示 Wrapper<const char*>
     //Wrapper<string> wrapper00 = Wrapper("operating system", strData); // TODO 为什么这里可以编译通过
     //Wrapper<string> wrapper02("operating system", "Linux");
     //wrapper00.print();
 
-     cout << myfun(30.0, 10.0) << "--" << myfun(8, 2) << endl;;
-
+    // 测试类模板的运用
     MyData md = MyData("杨过", 45);
     Wrapper<MyData> wrapper = Wrapper("personal name", md);
     wrapper.print();
 
+    // 测试函数模板的运用
+     cout << myfun(30.0, 10.0) << "--" << myfun(8, 2) << endl;;
+
+    // 等价于 cout << 2.22 << 'A'
     cout.operator<<(2.22).operator<<('A');
     return 0;
 }
