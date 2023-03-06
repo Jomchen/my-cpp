@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 
+// 函数模板
+// template <class T> 或 <typename T> 返回类型 函数名(参数表) { 函数体 }
 
 // 纯虚方法，引申出抽象类
 class Sort {
@@ -19,7 +21,6 @@ class MyData : public Sort {
         int getIndex() { return age; }
         friend ostream & operator<<(ostream &os, const MyData &myd);
 };
-
 // 重写输出符号
 ostream & operator<< (ostream & os, const MyData & myd) {
     // myd.getName(); myd.getName() 和 myd.getAge() 不能调用 是因为友元函数是只能访问其成员属性而非成员函数
@@ -27,13 +28,15 @@ ostream & operator<< (ostream & os, const MyData & myd) {
     return os;
 }
 
-// 泛型方法（模板方法）获取最大对象（getIndex 较大的对象）
+/* ****************************************************************************************** */
+
+// 泛型方法（函数模板）获取最大对象（getIndex 较大的对象）
 template <typename Sort> inline Sort* getMax(Sort * const s1, Sort * const s2) {
     int result = s1 -> getIndex() - s2 -> getIndex();
     return result >= 0 ? s1 : s2;
 }
 
-// TODO 这种写法不明白
+// 函数模板
 template <class T> T myfun(T t1, T t2) {
     if (sizeof(T) == 8) {
         return t1 * t2;
