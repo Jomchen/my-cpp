@@ -33,6 +33,15 @@ template <typename Sort> inline Sort* getMax(Sort * const s1, Sort * const s2) {
     return result >= 0 ? s1 : s2;
 }
 
+// TODO 这种写法不明白
+template <class T> T myfun(T t1, T t2) {
+    if (sizeof(T) == 8) {
+        return t1 * t2;
+    } else {
+        return t1 + t2;
+    }
+}
+
 // 泛型类（模板类）
 template <class T> class Wrapper {
     private:
@@ -59,6 +68,8 @@ int main() {
     //Wrapper<string> wrapper00 = Wrapper("operating system", strData); // TODO 为什么这里可以编译通过
     //Wrapper<string> wrapper02("operating system", "Linux");
     //wrapper00.print();
+
+     cout << myfun(30.0, 10.0) << "--" << myfun(8, 2) << endl;;
 
     MyData md = MyData("杨过", 45);
     Wrapper<MyData> wrapper = Wrapper("personal name", md);
