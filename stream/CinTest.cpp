@@ -14,15 +14,15 @@ using namespace std;
 */
 int main() {
 
-    char array[10];
+    char array[26];
     char *p = array;
-    for (int i = 65; i < 75; i++) {
+    for (int i = 65; i < 91; i++) {
         *p = i;
         p++;
     }
-    p -= 10;
+    p -= 26;
     cin.getline(p, 3, ' ');
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 26; i++) {
         cout << "-->" << *p << "<--" << endl;
         p++;
     }
