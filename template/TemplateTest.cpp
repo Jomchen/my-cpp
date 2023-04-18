@@ -1,6 +1,10 @@
 #include<iostream>
 using namespace std;
 
+// 函数模板
+// template <class T> 或 <typename T> 返回类型 函数名(参数表) { 函数体 }
+// 类模板
+// template <class T> class 类名 { 类体 }
 
 // 纯虚方法，引申出抽象类
 class Sort {
@@ -19,7 +23,6 @@ class MyData : public Sort {
         int getIndex() { return age; }
         friend ostream & operator<<(ostream &os, const MyData &myd);
 };
-
 // 重写输出符号
 ostream & operator<< (ostream & os, const MyData & myd) {
     // myd.getName(); myd.getName() 和 myd.getAge() 不能调用 是因为友元函数是只能访问其成员属性而非成员函数
@@ -27,10 +30,21 @@ ostream & operator<< (ostream & os, const MyData & myd) {
     return os;
 }
 
-// 泛型方法（模板方法）获取最大对象（getIndex 较大的对象）
+/* ****************************************************************************************** */
+
+// 泛型方法（函数模板）获取最大对象（getIndex 较大的对象）
 template <typename Sort> inline Sort* getMax(Sort * const s1, Sort * const s2) {
     int result = s1 -> getIndex() - s2 -> getIndex();
     return result >= 0 ? s1 : s2;
+}
+
+// 函数模板
+template <class T> T myfun(T t1, T t2) {
+    if (sizeof(T) == 8) {
+        return t1 * t2;
+    } else {
+        return t1 + t2;
+    }
 }
 
 // 泛型类（模板类）
@@ -54,16 +68,22 @@ int main() {
     Sort *s = getMax(&my, &my2);
     cout << s -> getIndex() << endl;
 
+    // 测试类模板的运用
     //string strData = "Java";
     //Wrapper<string> wrapper01 = Wrapper("operating system", "Linux"); // TODO 为什么这个编译不通过，编译错误显示 Wrapper<const char*>
     //Wrapper<string> wrapper00 = Wrapper("operating system", strData); // TODO 为什么这里可以编译通过
     //Wrapper<string> wrapper02("operating system", "Linux");
     //wrapper00.print();
 
+    // 测试类模板的运用
     MyData md = MyData("杨过", 45);
     Wrapper<MyData> wrapper = Wrapper("personal name", md);
     wrapper.print();
 
+    // 测试函数模板的运用
+     cout << myfun(30.0, 10.0) << "--" << myfun(8, 2) << endl;;
+
+    // 等价于 cout << 2.22 << 'A'
     cout.operator<<(2.22).operator<<('A');
     return 0;
 }
