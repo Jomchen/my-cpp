@@ -1,6 +1,7 @@
 #include<iostream>
 #include<cstring>
 #include<string>
+#include<climits>
 using namespace std;
 
 /**
@@ -25,7 +26,7 @@ int main() {
         p++;
     }
     p -= 26;
-    cin.getline(p, 3, ' \0');
+    cin.getline(p, INT_MAX, ' \n');
     // cin.read(p, 3);
     for (int i = 0; i < 26; i++) {
         cout << "-->" << *p << "<--" << endl;
