@@ -10,7 +10,7 @@ using namespace std;
  * int width(int nw)                    设置和返回输出宽度
  * int width() const                     返回值为当前的输出宽度值
  * char fill(char cFill)                   设置填充字符，当设置宽度大于数据输出需要的宽度时，空白位置以字符参数cFill填充   char fill() const 返回当前使用的填充符
- * int precision(int np)                设置数据显示精度，参数np设置数据显示精度，如果浮点数以定点形式输出，则np表示小数点后的数字位数
+ * int precision(int np)                设置数据显示精度，参数np设置数据显示精度，如果浮点数以定点形式输出，则np表示整数位数和小数位数总共的字数
  *                                                 如果设置为科学计数法输出，则np为尾数精度位数（包含小数点）
  *                                                 int precision() const 系统默认的数据显示精度为6位 float类型最大数据显示精度为64位
  *                                                 double 类型最大数据显示精度为15位
